@@ -1,5 +1,6 @@
 #include "classBST.h"
 
+//inserimento 
 node* Tree::insert(node*& root,int key){
     if(!root){
         root = new node{key};
@@ -15,6 +16,7 @@ node* Tree::insert(node*& root,int key){
     else return nullptr;
 }
 
+//visita simmetrica
 void Tree::inOrder(const node* root){
     if(root){
         inOrder(root->left);
@@ -23,6 +25,7 @@ void Tree::inOrder(const node* root){
     }
 }
 
+//visita anticipata
 void Tree::preOrder(const node* root){
     if(root){
         root->print_node();
@@ -31,6 +34,7 @@ void Tree::preOrder(const node* root){
     }
 }
 
+//visita posticipata
 void Tree::postOrder(const node* root){
     if(root){
         postOrder(root->left);
@@ -39,6 +43,7 @@ void Tree::postOrder(const node* root){
     }
 }
 
+//metodo che elimina un nodo esistente di label = key
 node* Tree::deleteNode(node* r, int key){
     if(!r)return r;
     if(key < r->label){
@@ -50,19 +55,19 @@ node* Tree::deleteNode(node* r, int key){
     }
 
     //nodo target trovato
-    if(!r->left){
+    if(!r->left){ //comprende 2 casi : nodo foglia e nodo con un figlio soltanto
         node* tmp = r;
         r = r->right;
         delete tmp;
         return r;
-    }else if(!r->right){
+    }else if(!r->right){ //come prima
         node* tmp = r;
         r = r->left;
         delete tmp;
         return r;
     }else{
         //nodo con due figli
-        //prendo il più grande del sottoalbero sx
+        //prendo il più grande elemento del sottoalbero sx
         node* succ = r;
         node* prec{nullptr};
         while(succ->right){
@@ -70,7 +75,7 @@ node* Tree::deleteNode(node* r, int key){
             succ = succ->right;
         }
 
-        if(!prec){
+        if(!prec){ //se coincide con l'elemento stesso
             prec = succ;
             r->left = succ->left;
             r->label = prec->label;
@@ -86,6 +91,7 @@ node* Tree::deleteNode(node* r, int key){
     }
 }
 
+//funzione che dealloca dalla memoria dinamica l'albero binario di ricerca
 node* Tree::dealloca(node* root){
     if(!root)return root;
     root->left = dealloca(root->left);
