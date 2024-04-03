@@ -14,12 +14,12 @@ int main(){
     t.in();
 
     t.cancelNode(1);
-    t.in();
+    t.out();
 
     t.cancelNode(9);
     t.cancelNode(11);
     t.cancelNode(2);
-    t.in();
+    t.pre();
 
     return 0;
 }
