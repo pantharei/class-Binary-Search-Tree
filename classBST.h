@@ -14,7 +14,7 @@ struct node{
 class Tree{
     node* root{nullptr};
 
-    node* insert(node*&,int);
+    node* insert(node*,int);
     void inOrder(const node*);
     void preOrder(const node*);
     void postOrder(const node*);
