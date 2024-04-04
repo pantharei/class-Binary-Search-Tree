@@ -22,8 +22,8 @@ class Tree{
     node* dealloca(node*);
 
     public:
-    bool add(int key){
-        return insert(root,key);
+    void add(int key){
+        root = insert(root,key);
     }
 
     void pre(){
