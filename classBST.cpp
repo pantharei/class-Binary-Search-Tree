@@ -4,16 +4,11 @@
 node* Tree::insert(node* root,int key){
     if(!root){
         root = new node{key};
-        return root;
-    }else if(key < root->label){
+    }else if(key < root->label)
         root->left = insert(root->left,key);
-        return root;
-    }
-    else if(key>root->label){
+    else if(key>root->label)
         root->right = insert(root->right,key);
-        return root;
-    }
-    else return nullptr;
+    return root;
 }
 
 //visita simmetrica
