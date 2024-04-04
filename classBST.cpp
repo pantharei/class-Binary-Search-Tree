@@ -1,7 +1,7 @@
 #include "classBST.h"
 
 //inserimento 
-node* Tree::insert(node*& root,int key){
+node* Tree::insert(node* root,int key){
     if(!root){
         root = new node{key};
         return root;
